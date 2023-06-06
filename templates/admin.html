@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Admin Page</title>
+    <style>
+        th{
+            background-color: rgb(127, 130, 130);
+        }
+        td{
+            background-color: rgb(243, 247, 243);
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Admin Page</h1>
+    <h2>Places:</h2>
+    <table border="1" align="center">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data1 %}
+          <tr>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>
+              <form action="/approvePlace" method="get">
+                <input type="hidden" name="name" value="{{ row[0] }}">
+                <button type="submit" style="background-color: green;">Approve</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>Items:</h2>
+    <table border="1" align="center">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data2 %}
+          <tr>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>
+              <form action="/approveItem" method="get">
+                <input type="hidden" name="name" value="{{ row[0] }}">
+                <button type="submit" style="background-color: green;">Approve</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
